@@ -39,80 +39,102 @@ fun ExerciseDetailScreen(
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Card(
+        ExerciseDetailHeaderContent(
+            modifier = Modifier,
+            exercise = exercise
+        )
+        Spacer(modifier = Modifier.height(16.dp))
+        ExerciseDetailInstructionsContent(
+            modifier = Modifier,
+            exercise = exercise
+         )
+    }
+}
+
+@Composable
+private fun ExerciseDetailHeaderContent(
+    modifier: Modifier,
+    exercise: Exercise
+){
+    Card(
+        modifier = modifier
+            .fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp)
+    ) {
+        Column(
             modifier = Modifier
-                .fillMaxWidth(),
-            shape = RoundedCornerShape(12.dp)
+                .fillMaxWidth()
+                .padding(8.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Column(
+            Text(
+                text = exercise.name,
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.primary
+            )
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
-                    text = exercise.name,
-                    style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.primary
-                )
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.exercise_muscle_text, exercise.muscle),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = colorResource(id = R.color.black)
-                    )
-                    Text(
-                        text = stringResource(id = R.string.exercise_difficulty_text, exercise.difficulty),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = colorResource(id = R.color.grey)
-                    )
-                }
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(8.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(
-                        text = stringResource(id = R.string.exercise_type_text, exercise.type),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = colorResource(id = R.color.black)
-                    )
-                    Text(
-                        text = stringResource(id = R.string.exercise_equipment_text, exercise.equipment),
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = colorResource(id = R.color.grey)
-                    )
-                }
-            }
-        }
-        Spacer(modifier = Modifier.height(16.dp))
-        Card(
-            modifier = Modifier
-                .fillMaxWidth(),
-            shape = RoundedCornerShape(12.dp)
-        ){
-            Column(
-                modifier = Modifier.padding(8.dp)
-            ) {
-                Text(
-                    modifier = Modifier.fillMaxWidth(),
-                    text = stringResource(id = R.string.instructions_text),
-                    style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.primary,
-                    textAlign = TextAlign.Center
-                )
-                Text(
-                    text = exercise.instructions,
+                    text = stringResource(id = R.string.exercise_muscle_text, exercise.muscle),
                     style = MaterialTheme.typography.bodyMedium,
                     color = colorResource(id = R.color.black)
                 )
+                Text(
+                    text = stringResource(id = R.string.exercise_difficulty_text, exercise.difficulty),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = colorResource(id = R.color.grey)
+                )
             }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = stringResource(id = R.string.exercise_type_text, exercise.type),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = colorResource(id = R.color.black)
+                )
+                Text(
+                    text = stringResource(id = R.string.exercise_equipment_text, exercise.equipment),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = colorResource(id = R.color.grey)
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun ExerciseDetailInstructionsContent(
+    modifier: Modifier,
+    exercise: Exercise
+){
+    Card(
+        modifier = modifier
+            .fillMaxWidth(),
+        shape = RoundedCornerShape(12.dp)
+    ){
+        Column(
+            modifier = Modifier.padding(8.dp)
+        ) {
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = stringResource(id = R.string.instructions_text),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.primary,
+                textAlign = TextAlign.Center
+            )
+            Text(
+                text = exercise.instructions,
+                style = MaterialTheme.typography.bodyMedium,
+                color = colorResource(id = R.color.black)
+            )
         }
     }
 }

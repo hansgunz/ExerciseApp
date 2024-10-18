@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -19,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.excerciceapp.presentation.screen.items.ExerciseGroup
 
 @Composable
 fun SearchScreen(
@@ -33,51 +35,49 @@ fun SearchScreen(
             Row(
                 modifier = Modifier.weight(1F)
             ) {
-                Card(
-                    onClick = { onClick(ExerciseSearchItem.ExerciseByName) },
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .weight(1F),
-                    shape = RoundedCornerShape(12.dp)
-                ) {
-                    CardContent(text = ExerciseSearchItem.ExerciseByName.text)
+                CardComponent(
+                    cardText = ExerciseSearchItem.ExerciseByName.text
+                ){
+                    onClick(ExerciseSearchItem.ExerciseByName)
                 }
                 Spacer(modifier = Modifier.width(2.dp))
-                Card(
-                    onClick = { onClick(ExerciseSearchItem.ExerciseByType) },
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .weight(1F),
-                    shape = RoundedCornerShape(12.dp)
-                ) {
-                    CardContent(text = ExerciseSearchItem.ExerciseByType.text)
+                CardComponent(
+                    cardText = ExerciseSearchItem.ExerciseByType.text
+                ){
+                    onClick(ExerciseSearchItem.ExerciseByType)
                 }
             }
             Spacer(modifier = Modifier.height(2.dp))
             Row(
                 modifier = Modifier.weight(1F)
             ) {
-                Card(
-                    onClick = { onClick(ExerciseSearchItem.ExerciseByMuscle) },
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .weight(1F),
-                    shape = RoundedCornerShape(12.dp)
-                ) {
-                    CardContent(text = ExerciseSearchItem.ExerciseByMuscle.text)
+                CardComponent(
+                    cardText = ExerciseSearchItem.ExerciseByMuscle.text
+                ){
+                    onClick(ExerciseSearchItem.ExerciseByMuscle)
                 }
                 Spacer(modifier = Modifier.width(2.dp))
-                Card(
-                    onClick = { onClick(ExerciseSearchItem.ExerciseByDifficulty) },
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .weight(1F),
-                    shape = RoundedCornerShape(12.dp)
-                ) {
-                    CardContent(text = ExerciseSearchItem.ExerciseByDifficulty.text)
+                CardComponent(cardText = ExerciseSearchItem.ExerciseByDifficulty.text){
+                    onClick(ExerciseSearchItem.ExerciseByDifficulty)
                 }
             }
         }
+}
+
+@Composable
+private fun RowScope.CardComponent(
+    cardText: String,
+    onCardClick: () -> Unit
+){
+    Card(
+        onClick = { onCardClick() },
+        modifier = Modifier
+            .fillMaxSize()
+            .weight(1F),
+        shape = RoundedCornerShape(12.dp)
+    ) {
+        CardContent(text = cardText)
+    }
 }
 
 @Composable

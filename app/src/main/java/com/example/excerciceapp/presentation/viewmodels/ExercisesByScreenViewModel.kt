@@ -54,17 +54,7 @@ class ExercisesByScreenViewModel @Inject constructor(
     private fun fetchExercisesByMuscle(muscle: String){
         viewModelScope.launch(Dispatchers.IO) {
             getExercisesByMuscleUseCase(muscle).collect{ result ->
-                when(result){
-                    is Result.Error -> {
-                        setErrorState( result.error)
-                    }
-                    is Result.Loading -> {
-                        setLoadingState()
-                    }
-                    is Result.Success -> {
-                        setSuccessState(result.data)
-                    }
-                }
+                resultHandler(result)
             }
         }
     }
@@ -72,17 +62,7 @@ class ExercisesByScreenViewModel @Inject constructor(
     private fun fetchExercisesByType(type: String){
         viewModelScope.launch(Dispatchers.IO) {
             getExercisesByTypeUseCase(type).collect{ result ->
-                when(result){
-                    is Result.Error -> {
-                        setErrorState(result.error)
-                    }
-                    is Result.Loading -> {
-                        setLoadingState()
-                    }
-                    is Result.Success -> {
-                        setSuccessState(result.data)
-                    }
-                }
+                resultHandler(result)
             }
         }
     }
@@ -90,17 +70,7 @@ class ExercisesByScreenViewModel @Inject constructor(
     private fun fetchExercisesByDifficulty(difficulty: String){
         viewModelScope.launch(Dispatchers.IO) {
             getExercisesByDifficultyUseCase(difficulty).collect{ result ->
-                when(result){
-                    is Result.Error -> {
-                        setErrorState(result.error)
-                    }
-                    is Result.Loading -> {
-                        setLoadingState()
-                    }
-                    is Result.Success -> {
-                        setSuccessState(result.data)
-                    }
-                }
+                resultHandler(result)
             }
         }
     }
@@ -108,17 +78,21 @@ class ExercisesByScreenViewModel @Inject constructor(
     private fun fetchExercisesByName(name: String){
         viewModelScope.launch(Dispatchers.IO) {
             getExercisesByNameUseCase(name).collect{ result ->
-                when(result){
-                    is Result.Error -> {
-                        setErrorState(result.error)
-                    }
-                    is Result.Loading -> {
-                        setLoadingState()
-                    }
-                    is Result.Success -> {
-                        setSuccessState(result.data)
-                    }
-                }
+                resultHandler(result)
+            }
+        }
+    }
+
+    private fun resultHandler(result: Result<List<Exercise>, DataError.Network>){
+        when(result){
+            is Result.Error -> {
+                setErrorState(result.error)
+            }
+            is Result.Loading -> {
+                setLoadingState()
+            }
+            is Result.Success -> {
+                setSuccessState(result.data)
             }
         }
     }
