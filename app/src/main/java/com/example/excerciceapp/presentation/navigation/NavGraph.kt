@@ -25,9 +25,11 @@ fun NavGraph(
     NavHost(navController = navController, startDestination = ScreenNavigationItem.ExercisesListNavigationItem ){
         composable<ScreenNavigationItem.ExercisesListNavigationItem>{
             ExercisesScreen(
-                modifier = modifier,
-                navController = navController
-            )
+                modifier = modifier
+            ){
+                navController
+                    .navigate(ScreenNavigationItem.ExerciseDetailSNavigationItem(it))
+            }
         }
         composable<ScreenNavigationItem.ExerciseDetailSNavigationItem>(
             typeMap = mapOf(

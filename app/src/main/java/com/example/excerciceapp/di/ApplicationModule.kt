@@ -71,8 +71,11 @@ object ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideFetchExercisesUseCase(remoteRepository: RemoteRepository): FetchExercisesUseCase{
-        return FetchExercisesUseCaseImpl(remoteRepository)
+    fun provideFetchExercisesUseCase(
+        remoteRepository: RemoteRepository,
+        errorHandler: ErrorHandler
+    ): FetchExercisesUseCase{
+        return FetchExercisesUseCaseImpl(remoteRepository, errorHandler)
     }
 
     @Provides

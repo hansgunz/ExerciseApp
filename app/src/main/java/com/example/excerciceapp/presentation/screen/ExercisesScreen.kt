@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.excerciceapp.domain.model.Exercise
 import com.example.excerciceapp.presentation.navigation.ScreenNavigationItem
 import com.example.excerciceapp.presentation.screen.common.ErrorText
 import com.example.excerciceapp.presentation.viewmodels.ExercisesScreenViewModel
@@ -26,8 +27,8 @@ import com.example.excerciceapp.presentation.viewmodels.ExercisesScreenViewModel
 @Composable
 fun ExercisesScreen(
     modifier: Modifier,
-    navController: NavController,
-    exercisesScreenViewModel: ExercisesScreenViewModel = hiltViewModel()
+    exercisesScreenViewModel: ExercisesScreenViewModel = hiltViewModel(),
+    onNavigate: (Exercise) -> Unit
 ){
     val exercises by exercisesScreenViewModel.exerciseListState.collectAsState()
     val exercisesError by exercisesScreenViewModel.exerciseErrorState.collectAsState()
@@ -51,8 +52,7 @@ fun ExercisesScreen(
                             exercise = exercise,
                             index = index
                         ){
-                            navController
-                                .navigate(ScreenNavigationItem.ExerciseDetailSNavigationItem(it))
+                            onNavigate(it)
                         }
                         HorizontalDivider()
                     }
