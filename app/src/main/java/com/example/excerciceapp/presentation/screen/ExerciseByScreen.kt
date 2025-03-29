@@ -52,7 +52,7 @@ fun ExerciseByScreen(
                                 modifier = Modifier,
                                 exerciseGroup = group
                             ){
-                                onGroupClick(it, ExercisesByAction.ByDifficulty)
+                                onGroupClick(it, ExercisesByAction.BY_DIFFICULTY)
                             }
                             HorizontalDivider()
                         }
@@ -65,7 +65,7 @@ fun ExerciseByScreen(
                                 modifier = Modifier,
                                 exerciseGroup = it
                             ){
-                                onGroupClick(it, ExercisesByAction.ByMuscle)
+                                onGroupClick(it, ExercisesByAction.BY_MUSCLE)
                             }
                             HorizontalDivider()
                         }
@@ -73,7 +73,7 @@ fun ExerciseByScreen(
                 }
                 ExerciseSearchItem.ExerciseByName -> {
                     SearchFieldScreen(modifier = Modifier){
-                        onGroupClick(it, ExercisesByAction.ByName)
+                        onGroupClick(it, ExercisesByAction.BY_NAME)
                     }
                 }
                 ExerciseSearchItem.ExerciseByType -> {
@@ -83,7 +83,7 @@ fun ExerciseByScreen(
                                 modifier = Modifier,
                                 exerciseGroup = it
                             ){
-                                onGroupClick(it, ExercisesByAction.ByType)
+                                onGroupClick(it, ExercisesByAction.BY_TYPE)
                             }
                             HorizontalDivider()
                         }
