@@ -1,11 +1,15 @@
 package com.example.excerciceapp.presentation.screen
 
+import androidx.compose.foundation.gestures.snapping.SnapPosition
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -23,14 +27,23 @@ fun BottomNavigationBar(
         tonalElevation = 8.dp,
         actions = {
             items.forEach {
-                IconButton(
-                    onClick = { navHostController.navigate(it) },
-                    modifier = Modifier.weight(1F)
+                Column(
+                    modifier = Modifier.weight(1F),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Icon(
-                        painter = painterResource(it.icon),
-                        contentDescription = "",
-                        modifier = Modifier.size(32.dp)
+                    IconButton(
+                        onClick = { navHostController.navigate(it) },
+                    ) {
+                        Icon(
+                            painter = painterResource(it.icon),
+                            contentDescription = "",
+                            modifier = Modifier.size(32.dp)
+                        )
+                    }
+                    Text(
+                        text = it.title,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.primary
                     )
                 }
             }

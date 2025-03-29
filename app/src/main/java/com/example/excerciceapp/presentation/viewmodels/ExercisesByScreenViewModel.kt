@@ -16,7 +16,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -36,16 +35,16 @@ class ExercisesByScreenViewModel @Inject constructor(
 
     fun onAction(action: ExercisesByAction, query: String){
         when(action){
-            ExercisesByAction.ByDifficulty -> {
+            ExercisesByAction.BY_DIFFICULTY -> {
                 fetchExercisesByDifficulty(query)
             }
-            ExercisesByAction.ByMuscle -> {
+            ExercisesByAction.BY_MUSCLE -> {
                 fetchExercisesByMuscle(query)
             }
-            ExercisesByAction.ByType -> {
+            ExercisesByAction.BY_TYPE -> {
                 fetchExercisesByType(query)
             }
-            ExercisesByAction.ByName -> {
+            ExercisesByAction.BY_NAME -> {
                 fetchExercisesByName(query)
             }
         }

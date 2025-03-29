@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -44,7 +43,7 @@ fun ExercisesByListScreen(
                     when{
                         exercisesList.isNotEmpty() ->{
                             when(exercisesByAction) {
-                                ExercisesByAction.ByName -> {
+                                ExercisesByAction.BY_NAME -> {
                                     ExerciseDetailScreen(exercise = exercisesList.first())
                                 }
                                 else -> {
