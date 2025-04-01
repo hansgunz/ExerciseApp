@@ -11,7 +11,7 @@ fun ErrorText(
     text: UiText
 ){
     Text(
-        text = text.toString(),
+        text = text.asString(),
         style = MaterialTheme.typography.headlineMedium,
         color = MaterialTheme.colorScheme.error
     )

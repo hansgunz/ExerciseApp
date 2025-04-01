@@ -5,13 +5,16 @@ import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -48,19 +51,34 @@ fun ExerciseItem(
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = stringResource(id = R.string.exercise_name_text, exercise.name),
+                text = exercise.name,
                 style = MaterialTheme.typography.titleSmall,
                 color = colorResource(id = R.color.black),
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
-            Text(
-                text = stringResource(id = R.string.exercise_muscle_text, exercise.muscle),
-                style = MaterialTheme.typography.bodySmall,
-                color = colorResource(id = R.color.grey),
-                maxLines = 1,
-                overflow = TextOverflow.Ellipsis
-            )
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = stringResource(id = R.string.exercise_muscle_text, exercise.muscle),
+                    modifier = Modifier.weight(1F),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = colorResource(id = R.color.grey),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+                Text(
+                    text = stringResource(id = R.string.exercise_difficulty_text, exercise.difficulty),
+                    modifier = Modifier.weight(1F),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = colorResource(id = R.color.grey),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
+            }
         }
     }
 }
