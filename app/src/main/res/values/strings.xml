@@ -12,4 +12,5 @@
     <string name="exercise_difficulty_text">Difficulty: %s</string>
     <string name="exercise_equipment_text">Equipment: %s</string>
     <string name="instructions_text">Instructions</string>
+    <string name="exercise_not_found_text">Exercise Not Found!</string>
 </resources>
