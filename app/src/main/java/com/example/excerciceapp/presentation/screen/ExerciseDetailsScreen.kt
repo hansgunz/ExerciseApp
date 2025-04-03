@@ -88,7 +88,7 @@ private fun ExerciseDetailHeaderContent(
                 Text(
                     text = stringResource(id = R.string.exercise_difficulty_text, exercise.difficulty),
                     style = MaterialTheme.typography.bodyMedium,
-                    color = colorResource(id = R.color.grey)
+                    color = colorResource(id = R.color.teal_700)
                 )
             }
             Row(
@@ -105,7 +105,7 @@ private fun ExerciseDetailHeaderContent(
                 Text(
                     text = stringResource(id = R.string.exercise_equipment_text, exercise.equipment),
                     style = MaterialTheme.typography.bodyMedium,
-                    color = colorResource(id = R.color.grey)
+                    color = colorResource(id = R.color.teal_700)
                 )
             }
         }
